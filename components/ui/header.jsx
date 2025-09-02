@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./button";
-import { LayoutDashboard } from "lucide-react";
+import { LayoutDashboard, PenBox } from "lucide-react";
 
 
 const Header = () => {
@@ -21,7 +21,7 @@ const Header = () => {
           />
         </Link>
         {/* Auth Buttons */}
-        <div>
+        <div className="flex items-center space-x-4">
             <SignedIn>
                 <Link href={"/dashboard"} className="text-gray-600 hover:text-blue-600 flex items-center gap-2">
                 <Button variant="outline" className="text-gray-700 hover:text-blue-600">
@@ -31,9 +31,9 @@ const Header = () => {
                 </Link>
 
                 <Link href={"/transaction/create"}>
-                <Button variant="outline" className="flext items-center gap-2">
-                    <LayoutDashboard size={18}/>
-                    <span className="hidden md:inline">Dashboard</span>
+                <Button className="flex items-center gap-2">
+                    <PenBox size={18}/>
+                    <span className="hidden md:inline">Add Transaction</span>
                 </Button>
                 </Link>
 
@@ -44,7 +44,11 @@ const Header = () => {
             </SignInButton>
           </SignedOut>
           <SignedIn>
-            <UserButton />
+            <UserButton appearance={{
+                elements:{
+                    avatarBox: "w-10 h-10",
+                }
+             }}/>
           </SignedIn>
         </div>
       </nav>
